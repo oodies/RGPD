@@ -1,0 +1,130 @@
+#
+# This file is part of RGPD project.
+#
+# (c) Sébastien CHOMY <sebastien.chomy@gmail.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+#
+
+##
+# Legal notice form page
+legal_notice:
+    # header
+    header_title: "Générateur de mentions légales"
+
+    # main title
+    title: "Mentions légales"
+
+    # Sections (title, subtitle, helper, etc ..)
+    website_section:
+        label: "Site Internet"
+        help: "Sans www, sans http(s)://"
+    owner_section:
+        label: "Identification du propriétaire du site"
+        individual:
+            label: "Personne physique"
+        society:
+            label: "Personne morale"
+    owner_address_section:
+        label: "Adresse du propriétaire du site"
+        help: "Adresse personnelle ou adresse du siège social de l'entreprise."
+    owner_contact_details_section:
+        label: "Coordonnées pour rentrer en contact avec le propriétaire du site"
+    publication_officer_section:
+        label: "Responsable de publication"
+    hosting_section:
+        label: "Hébergeur du site"
+    duns_section:
+        label: "R.C.S ou R.M"
+        question: "Si votre activité est assujetie aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers"
+    capital_section:
+        label: "Capital social"
+        question: "Si les statuts de votre forme juridique à un capital social, renseigner le"
+    vat_identifier_section:
+        label: "Assujeties à la TVA ?"
+        question: "Si vous êtes assujettie à la taxe sur la valeur ajoutée et identitifiée par un numéro individuelle en application de l'article 286 ter du code général des impôts, renseigner le :"
+    licensed_profession_section:
+        label: "Profession réglementée"
+        question: "Si vous êtes membre d'une profession réglementée, renseigner :"
+
+
+    ## fields legal notice form
+    #
+
+    # on website section
+    domain:
+        label: "Nom du domaine du site"
+
+    # on website owner section
+    individual_owner_lastname:
+        label: "Nom"
+    individual_owner_firstname:
+        label: "Prénom"
+    society_owner_name:
+        label: "Dénomination ou raison sociale"
+
+    # on contact details website owner section
+    owner_email:
+        label: "Adresse de courrier électronique"
+    owner_phone:
+        label: "Numéro de téléphone"
+
+    # on address website owner section
+    owner_streetAddress:
+        label: "Adresse"
+    owner_postalCode:
+        label: "Code postal"
+    owner_addressLocality:
+        label: "Ville"
+    owner_addressCountry:
+        label: "Pays"
+
+    # on publication officer section
+    publication_officer_lastname:
+        label: "Nom"
+    publication_officer_firstname:
+        label: "Prénom"
+
+    # on hosting section
+    hosting_name:
+        label: "Nom de l'hébergeur"
+    hosting_streetAddress:
+        label: "Adresse de l'hébergeur"
+    hosting_postalCode:
+        label: "Code postal"
+    hosting_addressLocality:
+        label: "Ville"
+    hosting_addressCountry:
+        label: "Pays"
+    hosting_phone:
+        label: "Numéro de téléphone"
+
+    # on duns section
+    duns_rcs:
+        label: "Numéro d'inscription au registre du commerce et des sociétés"
+        placeholder: "RCS"
+    duns_rm:
+        label: "Numéro d'inscription au registre des métiers"
+        placeholder: "R.M."
+
+    # on capital amount section
+    capital_amount:
+        label: "Montant du capital social"
+
+    # on v.a.t. identifier section
+    vat_identifier:
+        label: "Numéro individuel d'identificaton fiscale numéro de TVA intracommunautaire"
+
+    # licensed profession
+    licensed_profession_ref:
+        label: "la références aux règles professionnelles applicables"
+    licensed_profession_title:
+        label: "Son titre professionnel"
+    licensed_profession_eu_state:
+        label: "L'état membre dans lequel le titre professionnel a été octroyé"
+    licensed_profession_organism:
+        label: "Nom de l'ordre ou de l'organisme professionnel auprès duquel le titre est inscrit"
+
+    # Validate button
+    validate: "Générer"
