@@ -1,0 +1,206 @@
+= Mentions légales
+
+Ce document fournit les éléments nécessaire à la création d'un générateur de mentions légales. Le processus débute par un formulaire de saisie et fini par la génération du texte des mentions légales. +
+La difficulté de compréhension des textes de lois devrait se simplifier à la lecture de ce document.
+
+.Textes de lois de référence
+* https://www.legifrance.gouv.fr/affichCode.do;?idSectionTA=LEGISCTA000032227144&cidTexte=LEGITEXT000006069565[Code de la consommation : articles L131-1 à L131-4] +
+  `Obligation générale d'information précontractuelle`
+* https://www.legifrance.gouv.fr/affichCode.do?idSectionTA=LEGISCTA000032807114&cidTexte=LEGITEXT000006069565[Code de la consommation : article R111-1] +
+  `Obligation d'information précontractuelle`
+* https://www.legifrance.gouv.fr/affichTexteArticle.do?idArticle=LEGIARTI000024042423&cidTexte=LEGITEXT000005789847[Loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique : articles 19 et 20]
+* https://www.legifrance.gouv.fr/affichTexteArticle.do?idArticle=LEGIARTI000023711900&cidTexte=LEGITEXT000005789847[Loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique : article 6 ]
+
+LCEN::
+ La Confiance dans l'Economie Numérique
+
+== Cas particulier du simple site internet sans recolte de données
+A condition que le propriétaire du site à titre non professionnel communique seulement de l'information sans en récolter à son tour. L'article 6-2, ci-après, stipule que l'identité du propriétaire du site peut-être anonyme si ce dernier a communiqué ses éléments d'identification personnelle à son hébergeur.
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6-2.** +
+
+Les personnes éditant à titre non professionnel un service de communication au public en ligne peuvent ne tenir à la disposition du public, pour préserver leur anonymat, que le nom, la dénomination ou la raison sociale et l'adresse du prestataire mentionné au 2 du I, sous réserve de lui avoir communiqué les éléments d'identification personnelle prévus au 1.
+Les personnes mentionnées au 2 du I sont assujetties au secret professionnel dans les conditions prévues aux articles 226-13 et 226-14 du code pénal, pour tout ce qui concerne la divulgation de ces éléments d'identification personnelle ou de toute information permettant d'identifier la personne concernée. Ce secret professionnel n'est pas opposable à l'autorité judiciaire.
+====
+
+== Formulaire de saisie
+Pour construire le formulaire de saisie, organisons nos informations requises selon les différents contraintes stipulés dans les textes de lois.
+
+=== Site internet
+Les mentions légales sont liées à un site, il est donc naturel de connaitre l'URL du site.
+
+.Informations requires
+* Nom du domaine du site (URL)
+
+=== Identification du propriétaire du site
+Le propriétaire du site peut être une personne physique ou personne morale (société)
+
+==== Personne physique
+.Informations requises
+* Nom de la personne
+* Prénom de la personne
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6 III-1 alinéa-a** +
+
+S'il s'agit de **personnes physiques**, leurs **nom, prénoms**, domicile et numéro de téléphone et, si elles sont assujetties aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers, le numéro de leur inscription ;
+====
+
+==== Personne morale
+.Informations requises
+* Forme juridique
+* Dénomination ou raison sociale
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6 III.1.b)** +
+
+S'il s'agit de **personnes morales**, leur **dénomination ou leur raison sociale** et leur siège social, leur numéro de téléphone et, s'il s'agit d'entreprises assujetties aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers, le numéro de leur inscription, leur capital social, l'adresse de leur siège social ;
+====
+
+=== Adresse du propriétaire du site
+Il s'agit de l'adresse de la personne physique ou l'adresse du siège social de l'entreprise, à l'exclusion des personnes mentionnés dans l'article 6-2.
+
+.informations requises
+* Adresse
+* Code postal
+* Ville
+* Pays
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 19 2°** +
+
+**L’adresse où elle est établie**, son adresse de courrier électronique, ainsi que des coordonnées téléphoniques permettant d'entrer effectivement en contact avec elle ;
+====
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6 III.1.b)** +
+
+S'il s'agit de **personnes morales**, leur dénomination ou leur raison sociale et leur siège social, leur numéro de téléphone et, s'il s'agit d'entreprises assujetties aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers, le numéro de leur inscription, leur capital social, l'**adresse de leur siège social** ;
+====
+
+=== Coordonnées pour rentrer en contact avec le propriétaire du site
+.informations requises
+* Adresse de courrier électronique
+* Numéro de téléphone
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 19 2°** +
+
+L’adresse où elle est établie, **son adresse de courrier électronique, ainsi que des coordonnées téléphoniques** permettant d'entrer effectivement en contact avec elle ;
+====
+
+=== Responsable de publication
+.informations requises
+* Nom du directeur de la publication
+* Prénom du directeur de la publication
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6-III-1-c)** +
+
+Le **nom du directeur ou du codirecteur de la publication** et, le cas échéant, celui du responsable de la rédaction au sens de l'article 93-2 de la loi n° 82-652 du 29 juillet 1982 précitée ;
+====
+
+=== Hébergeur du site
+Les mentions légales
+
+.Informations requises
+* Nom de l'hébergeur
+* Adresse de l'hébergeur
+* Code postal de l
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6-III d)** +
+
+Le nom, la dénomination ou la raison sociale et l'adresse et le numéro de téléphone du prestataire mentionné au 2 du I.
+====
+
+=== R.C.S ou R.M
+Si l'activité est assujetie aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers.
+
+.Informations requises
+* Numéro d'inscription au registre du commerce et des sociétés suivie du nom de la ville où se trouve le greffe auquel vous êtes immatriculés
+
+ou
+
+* Numéro d'inscription au registre des métiers
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6 III-1 alinéa-1** +
+
+Si la personne physique est assujettie aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers :
+====
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6 III.1.b)** +
+
+S'il s'agit d'entreprises assujetties aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers, le numéro de leur inscription, leur capital social, l'adresse de leur siège social;
+====
+
+=== Capital social
+S'il s'agit d'entreprises assujetties aux formalités d'inscription au RCS ou répertoire des métiers.
+
+.Information requise
+* Montant du capital
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 6 III.1.b)** +
+
+s'il s'agit d'entreprises assujetties aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers, le numéro de leur inscription, leur capital social, l'adresse de leur siège social;
+====
+
+=== Assujeties à la TVA
+Si la personne est assujettie à la taxe sur la valeur ajoutée.
+
+.Informations requises :
+* Numéro individuel d'identification fiscale numéro de TVA intracommunautaire
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 19.4°** +
+
+Si elle est **assujettie à la taxe sur la valeur ajoutée et identifiée par un numéro individuel** en application de l'article 286 ter du code général des impôts, son **numéro individuel d'identification** ;
+====
+
+=== Activité réglementée
+
+Si le site concerne une activité soumise à autorisation
+
+* Conseil juridique
+* Enseignement
+* Cours à domicile
+* Hotelier
+* Loueur de meublés
+* Métaux précieux
+* commissionnaire en garantie
+* Prêt sur gage immobilier
+
+Source : https://service-public-entreprises.gouv.mc/Creation-d-activite/Activites-reglementees/Generalites/Liste-des-activites-reglementees-et-ou-soumises-a-autorisation[Liste des activités réglementées et/ou soumises à autorisation]
+
+.Informations requises
+* La référence à l'autorisation
+* Le nom et l'adresse de l'autorité ayant délivré l'autorisation
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 19.5°** +
+
+Si son activité est soumise à un régime d'autorisation, le nom et l'adresse de l'autorité ayant délivré celle-ci ;
+====
+
+=== Profession réglementée
+Si la personne est membre d'une profession réglementée
+
+* Activité d'assurance, comptables, juridiques et financières
+* Activités immobilières
+* Médias
+* Activités de service à la personne
+* Activités ...
+
+Source : https://service-public-entreprises.gouv.mc/Creation-d-activite/Activites-reglementees/Generalites/Liste-des-activites-reglementees-et-ou-soumises-a-autorisation[Liste des activités réglementées et/ou soumises à autorisation]
+
+.Informations requises
+* la références aux règles professionnelles applicables
+* Son titre professionnel
+* L'état membre dans lequel le titre professionnel a été octroyé
+* Nom de l'ordre ou de l'organisme professionnel auprès duquel le titre est inscrit
+
+====
+**Loi n°2004-575 du 21 juin 2004 (LCEN) Article 19.6°** +
+
+Si elle est membre d'une **profession réglementée**, la référence aux règles professionnelles applicables, son titre professionnel, l'Etat membre dans lequel il a été octroyé ainsi que le nom de l'ordre ou de l'organisme professionnel auprès duquel elle est inscrite.
+====
