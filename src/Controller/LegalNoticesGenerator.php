@@ -102,7 +102,7 @@ class LegalNoticesGenerator
 
         return new Response(
             $this->twig->render(
-                'App/legalNoticeGenerator.html.twig',
+                'App/legalNoticeForm.html.twig',
                 ['form' => $form->createView()]
             )
         );
