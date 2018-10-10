@@ -1,0 +1,147 @@
+{% trans_default_domain 'application' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ 'legal_notice.header_title'|trans }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        /* dl - definition list */
+        .dl > p {
+            margin-bottom: 0
+        }
+
+        p > span:first-child {
+            font-weight: 500;
+        }
+
+        h2 {
+            margin-top: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        h1,h2,h3 {color: firebrick; }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Mentions légales</h1>
+    <p>Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la confiance
+        dans l'économie numérique, nous portons à la connaissance des utilisateurs et visiteurs du site
+        <b>{{ domain }}</b> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
+    </p>
+    <h2>1. Editeur</h2>
+    <div class="dl">
+        <p>
+            <span>Nom : </span>
+            <span>{{ individual_owner_firstname }} {{ individual_owner_lastname }}</span>
+        </p>
+        <p>
+            <span>Adresse : </span>
+            <span>{{ owner_streetAddress }}, {{ owner_postalCode }} {{ owner_addressLocality }}
+                , {{ owner_addressCountry }}</span>
+        </p>
+    </div>
+    <p>OU</p>
+    <div class="dl">
+        <p>
+            <span>Société : </span>
+            <span>{{ society_owner_name }}</span>
+        </p>
+        <p>
+            <span>Forme juridique : </span>
+            <span>{{ society_entity_type }}</span>
+        </p>
+        <p>
+            <span>Capital social : </span>
+            <span>{{ capital_amount }}</span>
+        </p>
+        <p>
+            <span>Siège social : </span>
+            <span>{{ owner_streetAddress }}, {{ owner_postalCode }} {{ owner_addressLocality }}
+                , {{ owner_addressCountry }}</span>
+        </p>
+        <h3>Contact</h3>
+        <p>
+            <span>E-mail : </span>
+            <span>{{ owner_email }}</span>
+        </p>
+        <p>
+            <span>Téléphone : </span>
+            <span>{{ owner_phone }}</span>
+        </p>
+        <h3>Numéro d'identification</h3>
+        <p>
+            <span>Numéro d'inscripion RCS : </span>
+            <span>{{ duns_rcs }}</span>
+        </p>
+        <p>
+            <span>Numéro d'inscripion Registre des Métiers : </span>
+            <span>{{ duns_rm }}</span>
+        </p>
+        <p>
+            <span>TVA Intracommunautaire : </span>
+            <span>{{ vat_identifier }}</span>
+        </p>
+        <h3>Profession réglementées</h3>
+        <p>
+            <span>Titre professionnel : </span>
+            <span> {{ licensed_profession_title }}</span>
+        </p>
+        <p>
+            <span>Nom de l'ordre ou organisme d'inscription : </span>
+            <span> {{ licensed_profession_organism }}</span>
+        </p>
+        <p>
+            <span>Référence aux règles professionnelles : </span>
+            <span> {{ licensed_profession_ref }}</span>
+        </p>
+        <p>
+            <span>Pays de délivrance : </span>
+            <span> {{ licensed_profession_eu_state }}</span>
+        </p>
+    </div>
+    <h2>2. Hébergement</h2>
+    <p>Ce site interne est hébergé par :</p>
+    <div class="dl">
+        <p>
+            <span>Société : </span>
+            <span>{{ hosting_name }}</span></p>
+        <p>
+            <span>Forme juridique : </span>
+            <span>{{ hosting_entity_type }}</span>
+        </p>
+        <p>
+            <span>Capital social  :</span>
+            <span>{{ hosting_capital_amount }}</span>
+        </p>
+        <p>
+            <span>Siège social : </span>
+            <span>{{ hosting_streetAddress }}, {{ hosting_postalCode }} {{ hosting_addressLocality }}
+                , {{ hosting_addressCountry|upper }}</span>
+        </p>
+        <p>
+            <span>RCS : </span>
+            <span>{{ hosting_duns_rcs }}</span>
+        </p>
+        <p>
+            <span>E-mail : </span>
+            <span>{{ hosting_email }}</span>
+        </p>
+        <p>
+            <span>Téléphone : </span>
+            <span>{{ hosting_phone }}</span>
+        </p>
+    </div>
+    <h2>3. Maintenance du site</h2>
+    <p>TODO Entité qui se s'occupe de la maintenance du site</p>
+</div>
+</body>
+</html>
