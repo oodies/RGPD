@@ -54,6 +54,11 @@ class LegalNoticesForm extends AbstractType
                 TextType::class,
                 ['label' => 'legal_notice.society_owner_name.label']
             )
+            ->add(
+                'society_entity_type',
+                TextType::class,
+                ['label' => 'legal_notice.society_entity_type.label']
+            )
             // address website owner section
             ->add(
                 'owner_streetAddress',
@@ -104,6 +109,11 @@ class LegalNoticesForm extends AbstractType
                 ['label' => 'legal_notice.hosting_name.label']
             )
             ->add(
+                'hosting_entity_type',
+                TextType::class,
+                ['label' => 'legal_notice.hosting_entity_type.label']
+            )
+            ->add(
                 'hosting_streetAddress',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_streetAddress.label']
@@ -124,9 +134,24 @@ class LegalNoticesForm extends AbstractType
                 ['label' => 'legal_notice.hosting_addressCountry.label']
             )
             ->add(
+                'hosting_email',
+                EmailType::class,
+                ['label' => 'legal_notice.hosting_email.label']
+            )
+            ->add(
                 'hosting_phone',
                 TelType::class,
                 ['label' => 'legal_notice.hosting_phone.label']
+            )
+            ->add(
+                'hosting_capital_amount',
+                NumberType::class,
+                ['label' => 'legal_notice.hosting_capital_amount.label']
+            )
+            ->add(
+                'hosting_duns_rcs',
+                TextType::class,
+                ['label' => 'legal_notice.hosting_duns_rcs.label']
             )
             // duns section
             ->add(
@@ -171,8 +196,7 @@ class LegalNoticesForm extends AbstractType
                 'licensed_profession_organism',
                 TextType::class,
                 ['label' => 'legal_notice.licensed_profession_organism.label']
-            )
-        ;
+            );
     }
 
     /**

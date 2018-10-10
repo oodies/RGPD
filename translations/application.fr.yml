@@ -63,6 +63,8 @@ legal_notice:
         label: "Prénom"
     society_owner_name:
         label: "Dénomination ou raison sociale"
+    society_entity_type:
+        label: "Forme juridique"
 
     # on contact details website owner section
     owner_email:
@@ -88,17 +90,26 @@ legal_notice:
 
     # on hosting section
     hosting_name:
-        label: "Nom de l'hébergeur"
+        label: "Raison sociale"
+    hosting_entity_type:
+        label: "Forme juridique"
     hosting_streetAddress:
-        label: "Adresse de l'hébergeur"
+        label: "Adresse"
     hosting_postalCode:
         label: "Code postal"
     hosting_addressLocality:
         label: "Ville"
     hosting_addressCountry:
         label: "Pays"
+    hosting_email:
+        label: "Adresse de courrier électronique"
     hosting_phone:
         label: "Numéro de téléphone"
+    hosting_capital_amount:
+        label: "Montant du capital social"
+    hosting_duns_rcs:
+        label: "Numéro d'inscription au registre du commerce et des sociétés"
+        placeholder: "RCS"
 
     # on duns section
     duns_rcs:
