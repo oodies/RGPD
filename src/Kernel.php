@@ -9,34 +9,22 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
-/**
- * Class Kernel.
- */
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
     const CONFIG_EXTS = '.{php,xml,yaml,yml}';
 
-    /**
-     * @return string
-     */
     public function getCacheDir()
     {
         return $this->getProjectDir().'/var/cache/'.$this->environment;
     }
 
-    /**
-     * @return string
-     */
     public function getLogDir()
     {
         return $this->getProjectDir().'/var/log';
     }
 
-    /**
-     * @return \Generator|iterable|\Symfony\Component\HttpKernel\Bundle\BundleInterface[]
-     */
     public function registerBundles()
     {
         $contents = require $this->getProjectDir().'/config/bundles.php';
@@ -47,17 +35,11 @@ class Kernel extends BaseKernel
         }
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param LoaderInterface  $loader
-     *
-     * @throws \InvalidArgumentException
-     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
         $container->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));
         // Feel free to remove the "container.autowiring.strict_mode" parameter
-        // if you are using symfony/dependency-injection 4.0+ as it'params the default behavior
+        // if you are using symfony/dependency-injection 4.0+ as it's the default behavior
         $container->setParameter('container.autowiring.strict_mode', true);
         $container->setParameter('container.dumper.inline_class_loader', true);
         $confDir = $this->getProjectDir().'/config';
@@ -68,11 +50,6 @@ class Kernel extends BaseKernel
         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
     }
 
-    /**
-     * @param RouteCollectionBuilder $routes
-     *
-     * @throws \Symfony\Component\Config\Exception\FileLoaderLoadException
-     */
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
         $confDir = $this->getProjectDir().'/config';
