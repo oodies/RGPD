@@ -9,56 +9,74 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Form;
+namespace App\Form\LegalNotice;
 
+use App\Model\LegalNotice\params;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class LegalNoticesGenerator.
+ * Class Form.
  */
-class LegalNoticesForm extends AbstractType
+class Form extends AbstractType
 {
+    /** @var params */
+    private $params;
+
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->params = $options['legalNotice_params'];
+
         $builder
             // website section
             ->add(
                 'domain',
-                TextType::class,
+                UrlType::class,
                 ['label' => 'legal_notice.domain.label']
             )
-            // website owner section
-            ->add(
-                'individual_owner_lastname',
-                TextType::class,
-                ['label' => 'legal_notice.individual_owner_lastname.label']
-            )
-            ->add(
-                'individual_owner_firstname',
-                TextType::class,
-                ['label' => 'legal_notice.individual_owner_firstname.label']
-            )
-            ->add(
-                'society_owner_name',
-                TextType::class,
-                ['label' => 'legal_notice.society_owner_name.label']
-            )
-            ->add(
-                'society_entity_type',
-                TextType::class,
-                ['label' => 'legal_notice.society_entity_type.label']
-            )
+        ;
+
+        // website owner section
+        if ($this->params->isSociety()) {
+            $builder
+                ->add(
+                    'society_owner_name',
+                    TextType::class,
+                    ['label' => 'legal_notice.society_owner_name.label']
+                )
+                ->add(
+                    'society_entity_type',
+                    TextType::class,
+                    ['label' => 'legal_notice.society_entity_type.label']
+                )
+            ;
+        } else {
+            $builder
+                ->add(
+                    'individual_owner_lastname',
+                    TextType::class,
+                    ['label' => 'legal_notice.individual_owner_lastname.label']
+                )
+                ->add(
+                    'individual_owner_firstname',
+                    TextType::class,
+                    ['label' => 'legal_notice.individual_owner_firstname.label']
+                )
+            ;
+        }
+
+        $builder
             // address website owner section
             ->add(
                 'owner_streetAddress',
@@ -153,50 +171,77 @@ class LegalNoticesForm extends AbstractType
                 TextType::class,
                 ['label' => 'legal_notice.hosting_duns_rcs.label']
             )
-            // duns section
-            ->add(
-                'duns_rcs',
-                TextType::class,
-                ['label' => 'legal_notice.duns_rcs.label']
-            )
-            ->add(
-                'duns_rm',
-                TextType::class,
-                ['label' => 'legal_notice.duns_rm.label']
-            )
-            // capital section
-            ->add(
-                'capital_amount',
-                NumberType::class,
-                ['label' => 'legal_notice.capital_amount.label']
-            )
-            // V.A.T. section
-            ->add(
-                'vat_identifier',
-                TextType::class,
-                ['label' => 'legal_notice.vat_identifier.label']
-            )
-            // licensed profession
-            ->add(
-                'licensed_profession_ref',
-                TextType::class,
-                ['label' => 'legal_notice.licensed_profession_ref.label']
-            )
-            ->add(
-                'licensed_profession_title',
-                TextType::class,
-                ['label' => 'legal_notice.licensed_profession_title.label']
-            )
-            ->add(
-                'licensed_profession_eu_state',
-                TextType::class,
-                ['label' => 'legal_notice.licensed_profession_eu_state.label']
-            )
-            ->add(
-                'licensed_profession_organism',
-                TextType::class,
-                ['label' => 'legal_notice.licensed_profession_organism.label']
-            );
+        ;
+
+        // RCS
+        if ($this->params->isRCS()) {
+            $builder
+                ->add(
+                    'duns_rcs',
+                    TextType::class,
+                    ['label' => 'legal_notice.duns_rcs.label']
+                )
+            ;
+        }
+
+        // RM
+        if ($this->params->isRM()) {
+            $builder
+                ->add(
+                    'duns_rm',
+                    TextType::class,
+                    ['label' => 'legal_notice.duns_rm.label']
+                )
+            ;
+        }
+
+        // V.A.T
+        if ($this->params->isVatIdentifier()) {
+            $builder
+                ->add(
+                    'vat_identifier',
+                    TextType::class,
+                    ['label' => 'legal_notice.vat_identifier.label']
+                )
+            ;
+        }
+
+        // capital social
+        if ($this->params->isCapitalSocial()) {
+            $builder
+                ->add(
+                    'capital_amount',
+                    NumberType::class,
+                    ['label' => 'legal_notice.capital_amount.label']
+                )
+            ;
+        }
+
+        // licensed profession
+        if ($this->params->isLicensedProfession()) {
+            $builder
+                ->add(
+                    'licensed_profession_ref',
+                    TextType::class,
+                    ['label' => 'legal_notice.licensed_profession_ref.label']
+                )
+                ->add(
+                    'licensed_profession_title',
+                    TextType::class,
+                    ['label' => 'legal_notice.licensed_profession_title.label']
+                )
+                ->add(
+                    'licensed_profession_eu_state',
+                    TextType::class,
+                    ['label' => 'legal_notice.licensed_profession_eu_state.label']
+                )
+                ->add(
+                    'licensed_profession_organism',
+                    TextType::class,
+                    ['label' => 'legal_notice.licensed_profession_organism.label']
+                )
+            ;
+        }
     }
 
     /**
@@ -209,6 +254,7 @@ class LegalNoticesForm extends AbstractType
         $resolver->setDefaults(
             [
                 'translation_domain' => 'application',
+                'legalNotice_params' => null,
             ]
         );
     }

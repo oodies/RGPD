@@ -18,7 +18,10 @@
 </head>
 <body>
 <div class="container">
+
     <h1>{{ 'legal_notice.title'|trans }}</h1>
+    <p>2 / 3 - Remplisser le formulaire et générer !</p>
+    <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">Précédent</a>
     {{ form_start(form, {'attr' : { 'novalidate':'novalidate'}} ) }}
     <section>
         <h3>{{ 'legal_notice.website_section.label'|trans }}</h3>
@@ -30,36 +33,29 @@
     </section>
     <section>
         <h3>{{ 'legal_notice.owner_section.label'|trans }}</h3>
-        <div class="row">
-            <div class="col-5 col-xs-12">
-                <h4>{{ 'legal_notice.owner_section.individual.label'|trans }}</h4>
-                <div class="form-group">
+        {% if legalNoticeParameters.isSociety == false %}
+            <div class="form-group">
                     {{ form_label(form.individual_owner_lastname) }}
                     {{ form_widget(form.individual_owner_lastname, {'attr': {'class': 'form-control'}} ) }}
+                </div>
+            <div class="form-group">
                     {{ form_label(form.individual_owner_firstname) }}
                     {{ form_widget(form.individual_owner_firstname, {'attr': {'class': 'form-control'}} ) }}
                 </div>
-            </div>
-            <div class="col-1 col-xs-12 d-flex align-items-center justify-content-center">
-                <span class="font-weight-bold">OU</span>
-            </div>
-            <div class="col-6 col-xs-12">
-                <h4>{{ 'legal_notice.owner_section.society.label'|trans }}</h4>
-                <div class="form-group">
-                {{ form_label(form.society_owner_name) }}
-                {{ form_widget(form.society_owner_name, {'attr': {'class': 'form-control'}} ) }}
+        {% endif %}
+        {% if legalNoticeParameters.isSociety == true %}
+            <div class="form-group">
+                     {{ form_label(form.society_owner_name) }}
+                    {{ form_widget(form.society_owner_name, {'attr': {'class': 'form-control'}} ) }}
                 </div>
-                <div class="form-group">
+            <div class="form-group">
                     {{ form_label(form.society_entity_type) }}
                     {{ form_widget(form.society_entity_type, {'attr': {'class': 'form-control'}} ) }}
                 </div>
-            </div>
-
-        </div>
+        {% endif %}
     </section>
     <section>
         <h3>{{ 'legal_notice.owner_address_section.label'|trans }}</h3>
-        <small>{{ 'legal_notice.owner_address_section.help'|trans }}</small>
         <div class="form-group">
             {{ form_label(form.owner_streetAddress) }}
             {{ form_widget(form.owner_streetAddress, {'attr': {'class': 'form-control' }} ) }}
@@ -100,6 +96,74 @@
             {{ form_widget(form.publication_officer_firstname, {'attr': {'class': 'form-control' }} ) }}
         </div>
     </section>
+    {% if(legalNoticeParameters.isRCS or legalNoticeParameters.isRM) %}
+        <section>
+            <h3>{{ 'legal_notice.duns_section.label'|trans }}</h3>
+            <p>{{ 'legal_notice.duns_section.question'|trans }}</p>
+            {% if(legalNoticeParameters.isRCS) %}
+                <div class="form-group">
+            {{ form_label(form.duns_rcs) }}
+            {{ form_widget(form.duns_rcs, {'attr': {'class': 'form-control', 'placeholder' : 'legal_notice.duns_rcs.placeholder'|trans }} ) }}
+        </div>
+            {% endif %}
+            {% if(legalNoticeParameters.isRM) %}
+                <div class="form-group">
+            {{ form_label(form.duns_rm) }}
+            {{ form_widget(form.duns_rm, {'attr': {'class': 'form-control', 'placeholder' : 'legal_notice.duns_rm.placeholder'|trans }} ) }}
+        </div>
+            {% endif %}
+        </section>
+    {% endif %}
+
+    {% if(legalNoticeParameters.isCapitalSocial) %}
+        <section>
+            <h3>{{ 'legal_notice.capital_section.label'|trans }}</h3>
+            <p>{{ 'legal_notice.capital_section.question'|trans }}</p>
+            <div class="form-group">
+                {{ form_label(form.capital_amount) }}
+                <div class="input-group">
+                    {{ form_widget(form.capital_amount, {'attr': {'class': 'form-control' }} ) }}
+                    <div class="input-group-append">
+                        <span class="input-group-text">€ euros</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if(legalNoticeParameters.isVatIdentifier) %}
+        <section>
+            <h3>{{ 'legal_notice.vat_identifier_section.label'|trans }}</h3>
+            <p>{{ 'legal_notice.vat_identifier_section.question'|trans }}</p>
+            <div class="form-group">
+            {{ form_label(form.vat_identifier) }}
+            {{ form_widget(form.vat_identifier, {'attr': {'class': 'form-control' }} ) }}
+        </div>
+        </section>
+    {% endif %}
+
+    {% if(legalNoticeParameters.isLicensedProfession) %}
+        <section>
+            <h3>{{ 'legal_notice.licensed_profession_section.label'|trans }}</h3>
+            <p>{{ 'legal_notice.licensed_profession_section.question'|trans }}</p>
+            <div class="form-group">
+            {{ form_label(form.licensed_profession_title) }}
+            {{ form_widget(form.licensed_profession_title, {'attr': {'class': 'form-control' }} ) }}
+        </div>
+            <div class="form-group">
+            {{ form_label(form.licensed_profession_organism) }}
+            {{ form_widget(form.licensed_profession_organism, {'attr': {'class': 'form-control' }} ) }}
+        </div>
+            <div class="form-group">
+            {{ form_label(form.licensed_profession_ref) }}
+            {{ form_widget(form.licensed_profession_ref, {'attr': {'class': 'form-control' }} ) }}
+        </div>
+            <div class="form-group">
+            {{ form_label(form.licensed_profession_eu_state) }}
+            {{ form_widget(form.licensed_profession_eu_state, {'attr': {'class': 'form-control' }} ) }}
+        </div>
+        </section>
+    {% endif %}
     <section>
         <h3>{{ 'legal_notice.hosting_section.label'|trans }}</h3>
         <div class="form-group">
@@ -129,7 +193,7 @@
         <div class="form-group">
             {{ form_label(form.hosting_capital_amount) }}
             <div class="input-group">
-            {{ form_widget(form.hosting_capital_amount, {'attr': {'class': 'form-control'}} ) }}
+                {{ form_widget(form.hosting_capital_amount, {'attr': {'class': 'form-control'}} ) }}
                 <div class="input-group-append">
                     <span class="input-group-text">€ euros</span>
                 </div>
@@ -148,61 +212,8 @@
             {{ form_widget(form.hosting_email, {'attr': {'class': 'form-control'}} ) }}
         </div>
     </section>
-    <section>
-        <h3>{{ 'legal_notice.duns_section.label'|trans }}</h3>
-        <p>{{ 'legal_notice.duns_section.question'|trans }}</p>
-        <div class="form-group">
-            {{ form_label(form.duns_rcs) }}
-            {{ form_widget(form.duns_rcs, {'attr': {'class': 'form-control', 'placeholder' : 'legal_notice.duns_rcs.placeholder'|trans }} ) }}
-        </div>
-        <div class="font-weight-bold">OU</div>
-        <div class="form-group">
-            {{ form_label(form.duns_rm) }}
-            {{ form_widget(form.duns_rm, {'attr': {'class': 'form-control', 'placeholder' : 'legal_notice.duns_rm.placeholder'|trans }} ) }}
-        </div>
-    </section>
-    <section>
-        <h3>{{ 'legal_notice.capital_section.label'|trans }}</h3>
-        <p>{{ 'legal_notice.capital_section.question'|trans }}</p>
-        <div class="form-group">
-            {{ form_label(form.capital_amount) }}
-            <div class="input-group">
-                {{ form_widget(form.capital_amount, {'attr': {'class': 'form-control' }} ) }}
-                <div class="input-group-append">
-                    <span class="input-group-text">€ euros</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h3>{{ 'legal_notice.vat_identifier_section.label'|trans }}</h3>
-        <p>{{ 'legal_notice.vat_identifier_section.question'|trans }}</p>
-        <div class="form-group">
-            {{ form_label(form.vat_identifier) }}
-            {{ form_widget(form.vat_identifier, {'attr': {'class': 'form-control' }} ) }}
-        </div>
-    </section>
-    <section>
-        <h3>{{ 'legal_notice.licensed_profession_section.label'|trans }}</h3>
-        <p>{{ 'legal_notice.licensed_profession_section.question'|trans }}</p>
-        <div class="form-group">
-            {{ form_label(form.licensed_profession_title) }}
-            {{ form_widget(form.licensed_profession_title, {'attr': {'class': 'form-control' }} ) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.licensed_profession_organism) }}
-            {{ form_widget(form.licensed_profession_organism, {'attr': {'class': 'form-control' }} ) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.licensed_profession_ref) }}
-            {{ form_widget(form.licensed_profession_ref, {'attr': {'class': 'form-control' }} ) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.licensed_profession_eu_state) }}
-            {{ form_widget(form.licensed_profession_eu_state, {'attr': {'class': 'form-control' }} ) }}
-        </div>
-    </section>
     {{ form_rest(form) }}
+    <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">Précédent</a>
     <button type="submit" class="btn btn-primary">{{ 'legal_notice.validate'|trans }}</button>
     {{ form_end(form) }}
 </div>

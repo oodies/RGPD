@@ -12,7 +12,10 @@
     file that was distributed with this source code.
     -->
 
+    <route id="app_legal_notice_pre_generator" methods="GET POST" path="/legal-notice-request"
+           controller="App\Controller\LegalNotice\PreGenerator">
+    </route>
     <route id="app_legal_notice_generator" methods="GET POST" path="/legal-notice-generator"
-           controller="App\Controller\LegalNoticesGenerator">
+           controller="App\Controller\LegalNotice\Generator">
     </route>
 </routes>
