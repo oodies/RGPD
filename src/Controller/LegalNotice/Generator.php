@@ -12,6 +12,7 @@
 namespace App\Controller\LegalNotice;
 
 use App\Form\LegalNotice\Form as LegalNoticeForm;
+use App\Model\LegalNotice\LegalNotices;
 use App\Model\LegalNotice\Params;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,10 +63,11 @@ class Generator
     {
         /** @var Params $params */
         $params = $this->session->get('app.legalNotice.params');
+        $legalNotices = new LegalNotices();
 
         $form = $this->formFactory->create(
             LegalNoticeForm::class,
-            null,
+            $legalNotices,
             ['legalNotice_params' => $params]
         );
         $form->handleRequest($request);

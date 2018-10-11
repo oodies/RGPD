@@ -51,12 +51,12 @@ class Form extends AbstractType
         if ($this->params->isSociety()) {
             $builder
                 ->add(
-                    'society_owner_name',
+                    'societyOwnerName',
                     TextType::class,
                     ['label' => 'legal_notice.society_owner_name.label']
                 )
                 ->add(
-                    'society_entity_type',
+                    'societyEntityType',
                     TextType::class,
                     ['label' => 'legal_notice.society_entity_type.label']
                 )
@@ -64,12 +64,12 @@ class Form extends AbstractType
         } else {
             $builder
                 ->add(
-                    'individual_owner_lastname',
+                    'individualOwnerLastname',
                     TextType::class,
                     ['label' => 'legal_notice.individual_owner_lastname.label']
                 )
                 ->add(
-                    'individual_owner_firstname',
+                    'individualOwnerFirstname',
                     TextType::class,
                     ['label' => 'legal_notice.individual_owner_firstname.label']
                 )
@@ -79,95 +79,95 @@ class Form extends AbstractType
         $builder
             // address website owner section
             ->add(
-                'owner_streetAddress',
+                'ownerStreetAddress',
                 TextType::class,
                 ['label' => 'legal_notice.owner_streetAddress.label']
             )
             ->add(
-                'owner_postalCode',
+                'ownerPostalCode',
                 TextType::class,
                 ['label' => 'legal_notice.owner_postalCode.label']
             )
             ->add(
-                'owner_addressLocality',
+                'ownerAddressLocality',
                 TextType::class,
                 ['label' => 'legal_notice.owner_addressLocality.label']
             )
             ->add(
-                'owner_addressCountry',
+                'ownerAddressCountry',
                 CountryType::class,
                 ['label' => 'legal_notice.owner_addressCountry.label']
             )
             // contact details website owner section
             ->add(
-                'owner_email',
+                'ownerEmail',
                 EmailType::class,
                 ['label' => 'legal_notice.owner_email.label']
             )
             ->add(
-                'owner_phone',
+                'ownerPhone',
                 TelType::class,
                 ['label' => 'legal_notice.owner_phone.label']
             )
             // publication officer section
             ->add(
-                'publication_officer_lastname',
+                'publicationOfficerLastname',
                 TextType::class,
                 ['label' => 'legal_notice.publication_officer_lastname.label']
             )
             ->add(
-                'publication_officer_firstname',
+                'publicationOfficerFirstname',
                 TextType::class,
                 ['label' => 'legal_notice.publication_officer_firstname.label']
             )
             // hosting section
             ->add(
-                'hosting_name',
+                'hostingName',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_name.label']
             )
             ->add(
-                'hosting_entity_type',
+                'hostingEntityType',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_entity_type.label']
             )
             ->add(
-                'hosting_streetAddress',
+                'hostingStreetAddress',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_streetAddress.label']
             )
             ->add(
-                'hosting_postalCode',
+                'hostingPostalCode',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_postalCode.label']
             )
             ->add(
-                'hosting_addressLocality',
+                'hostingAddressLocality',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_addressLocality.label']
             )
             ->add(
-                'hosting_addressCountry',
+                'hostingAddressCountry',
                 CountryType::class,
                 ['label' => 'legal_notice.hosting_addressCountry.label']
             )
             ->add(
-                'hosting_email',
+                'hostingEmail',
                 EmailType::class,
                 ['label' => 'legal_notice.hosting_email.label']
             )
             ->add(
-                'hosting_phone',
+                'hostingPhone',
                 TelType::class,
                 ['label' => 'legal_notice.hosting_phone.label']
             )
             ->add(
-                'hosting_capital_amount',
+                'hostingCapitalAmount',
                 NumberType::class,
                 ['label' => 'legal_notice.hosting_capital_amount.label']
             )
             ->add(
-                'hosting_duns_rcs',
+                'hostingDunsRcs',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_duns_rcs.label']
             )
@@ -177,7 +177,7 @@ class Form extends AbstractType
         if ($this->params->isRCS()) {
             $builder
                 ->add(
-                    'duns_rcs',
+                    'dunsRcs',
                     TextType::class,
                     ['label' => 'legal_notice.duns_rcs.label']
                 )
@@ -188,7 +188,7 @@ class Form extends AbstractType
         if ($this->params->isRM()) {
             $builder
                 ->add(
-                    'duns_rm',
+                    'dunsRm',
                     TextType::class,
                     ['label' => 'legal_notice.duns_rm.label']
                 )
@@ -199,7 +199,7 @@ class Form extends AbstractType
         if ($this->params->isVatIdentifier()) {
             $builder
                 ->add(
-                    'vat_identifier',
+                    'vatIdentifier',
                     TextType::class,
                     ['label' => 'legal_notice.vat_identifier.label']
                 )
@@ -210,7 +210,7 @@ class Form extends AbstractType
         if ($this->params->isCapitalSocial()) {
             $builder
                 ->add(
-                    'capital_amount',
+                    'capitalAmount',
                     NumberType::class,
                     ['label' => 'legal_notice.capital_amount.label']
                 )
@@ -221,22 +221,22 @@ class Form extends AbstractType
         if ($this->params->isLicensedProfession()) {
             $builder
                 ->add(
-                    'licensed_profession_ref',
+                    'licensedProfessionRef',
                     TextType::class,
                     ['label' => 'legal_notice.licensed_profession_ref.label']
                 )
                 ->add(
-                    'licensed_profession_title',
+                    'licensedProfessionTitle',
                     TextType::class,
                     ['label' => 'legal_notice.licensed_profession_title.label']
                 )
                 ->add(
-                    'licensed_profession_eu_state',
+                    'licensedProfessionEuState',
                     TextType::class,
                     ['label' => 'legal_notice.licensed_profession_eu_state.label']
                 )
                 ->add(
-                    'licensed_profession_organism',
+                    'licensedProfessionOrganism',
                     TextType::class,
                     ['label' => 'legal_notice.licensed_profession_organism.label']
                 )
