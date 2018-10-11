@@ -7,5 +7,4 @@
 # file that was distributed with this source code.
 ##
 framework:
-    validation:
-        email_validation_mode: html5
+    validation: { enable_annotations: true }
