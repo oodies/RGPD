@@ -96,7 +96,9 @@ class Form extends AbstractType
             ->add(
                 'ownerAddressCountry',
                 CountryType::class,
-                ['label' => 'legal_notice.owner_addressCountry.label']
+                ['label'                => 'legal_notice.owner_addressCountry.label',
+                    'preferred_choices' => ['FR'],
+                ]
             )
             // contact details website owner section
             ->add(
@@ -149,7 +151,9 @@ class Form extends AbstractType
             ->add(
                 'hostingAddressCountry',
                 CountryType::class,
-                ['label' => 'legal_notice.hosting_addressCountry.label']
+                ['label'                => 'legal_notice.hosting_addressCountry.label',
+                    'preferred_choices' => ['FR'],
+                ]
             )
             ->add(
                 'hostingEmail',
@@ -255,7 +259,44 @@ class Form extends AbstractType
             [
                 'translation_domain' => 'application',
                 'legalNotice_params' => null,
+                'validation_groups'  => [$this, 'getValidationGroups'],
             ]
         );
+    }
+
+    /**
+     * @return array
+     */
+    public function getValidationGroups(): array
+    {
+        $groups[] = 'default';
+
+        if ($this->params->isSociety()) {
+            $groups[] = 'society';
+        } else {
+            $groups[] = 'individual';
+        }
+
+        if ($this->params->isRCS()) {
+            $groups[] = 'rcs';
+        }
+
+        if ($this->params->isRM()) {
+            $groups[] = 'rm';
+        }
+
+        if ($this->params->isCapitalSocial()) {
+            $groups[] = 'capitalSocial';
+        }
+
+        if ($this->params->isVatIdentifier()) {
+            $groups[] = 'vatIdentifier';
+        }
+
+        if ($this->params->isLicensedProfession()) {
+            $groups[] = 'licensedProfession';
+        }
+
+        return $groups;
     }
 }
