@@ -8,8 +8,15 @@
 #
 
 ##
+# Generic
+previous: "Précédent"
+continue: "Poursuivre"
+
+
+##
 # Legal notice form request
 legal_notice_pre_form:
+    stepper: "1 / 3 - Répondez à ces questions et poursuivre !"
     is_society: "Le site internet concerne t'il une société ?"
     is_rcs: "Votre activité est-elle assujettie aux formalités d'inscription au registre du commerce et des sociétés ?"
     is_rm: "Votre activité est-elle assujettie aux formalités d'inscription au registre des métiers ?"
@@ -20,6 +27,8 @@ legal_notice_pre_form:
 ##
 # Legal notice form page
 legal_notice:
+    stepper: "2 / 3 - Remplisser le formulaire et générer !"
+
     # header
     header_title: "Générateur de mentions légales"
 
@@ -29,7 +38,7 @@ legal_notice:
     # Sections (title, subtitle, helper, etc ..)
     website_section:
         label: "Site Internet"
-        help: "exemple : http(params)://mon-domain.fr"
+        help: "exemple : http://mon-domain.fr"
     owner_section:
         label: "Editeur"
     owner_address_section:
