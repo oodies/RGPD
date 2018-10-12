@@ -64,59 +64,33 @@ class Generator
     {
         /** @var Params $params */
         $params = $this->session->get('app.legalNotice.params');
-        $legalNotices = new LegalNotices();
+
+        if ($this->session->has('app.legalNotices')) {
+            /** @var LegalNotices $legalNotices */
+            $legalNotices = $this->session->get('app.legalNotices');
+        } else {
+            $legalNotices = new LegalNotices();
+        }
 
         $form = $this->formFactory->create(
             LegalNoticeForm::class,
             $legalNotices,
             ['legalNotice_params' => $params]
         );
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->session->set('app.legalNotices', $legalNotices);
+
             return new Response(
                 $this->twig->render(
                     'App\LegalNotice\document.html.twig',
-                    //$form->getData()
-
                     [
-                        // STUB Fake
-                        'domain'                     => 'oodigital.fr',
-                        'individual_owner_firstname' => 'Sébastien',
-                        'individual_owner_lastname'  => 'CHOMY',
-
-                        'society_owner_name'  => 'OODIGITAL',
-                        'society_entity_type' => 'SASU',
-
-                        'owner_streetAddress'   => '2b rue de la Houille Blanche',
-                        'owner_postalCode'      => '38190',
-                        'owner_addressLocality' => 'Villard Bonnot',
-                        'owner_addressCountry'  => 'France',
-                        'owner_email'           => 'sebastien.chomy@gmail.com',
-                        'owner_phone'           => '06 12 65 39 07',
-
-                        'capital_amount' => '1000 €',
-                        'duns_rcs'       => 'Grenoble 548 235 365',
-                        'duns_rm'        => '548 454 454',
-                        'vat_identifier' => 'FR 22 424 761 419',
-
-                        'licensed_profession_title'    => 'Agent immobilier',
-                        'licensed_profession_organism' => 'CCI de Grenoble',
-                        'licensed_profession_ref'      => 'Loi X',
-                        'licensed_profession_eu_state' => 'France',
-
-                        'hosting_name'            => 'OVH',
-                        'hosting_entity_type'     => 'SAS Société par action simplifié',
-                        'hosting_streetAddress'   => '2 rue Kellermann',
-                        'hosting_postalCode'      => '59100',
-                        'hosting_addressLocality' => 'Roubaix',
-                        'hosting_addressCountry'  => 'France',
-                        'hosting_capital_amount'  => '10 069 020 €',
-                        'hosting_duns_rcs'        => 'Grenoble 382 198 794',
-                        'hosting_phone'           => '1007',
-                        'hosting_email'           => 'support@ovh.com',
+                        'legalNotices'      => $legalNotices,
+                        'legalNoticeParams' => $params,
                     ]
-        )
+                )
             );
         }
 

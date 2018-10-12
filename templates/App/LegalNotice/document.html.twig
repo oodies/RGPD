@@ -35,115 +35,138 @@
 </head>
 <body>
 <div class="container">
-    <h1>Mentions légales</h1>
     <a type="button" href="{{ path('app_legal_notice_generator') }}" class="btn btn-secondary">Précédent</a>
+    <h1>Mentions légales</h1>
     <p>Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la confiance
         dans l'économie numérique, nous portons à la connaissance des utilisateurs et visiteurs du site
-        <b>{{ domain }}</b> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :
+        <b>{{ legalNotices.domain }}</b> l'identité des différents intervenants dans le cadre de sa réalisation et de
+        son suivi :
     </p>
     <h2>1. Editeur</h2>
     <div class="dl">
-        <p>
-            <span>Nom : </span>
-            <span>{{ individual_owner_firstname }} {{ individual_owner_lastname }}</span>
-        </p>
-        <p>
-            <span>Adresse : </span>
-            <span>{{ owner_streetAddress }}, {{ owner_postalCode }} {{ owner_addressLocality }}
-                , {{ owner_addressCountry }}</span>
-        </p>
-    </div>
-    <p>OU</p>
-    <div class="dl">
+        {% if legalNoticeParams.isSociety == true %}
         <p>
             <span>Société : </span>
-            <span>{{ society_owner_name }}</span>
+            <span>{{ legalNotices.societyOwnerName }}</span>
         </p>
         <p>
             <span>Forme juridique : </span>
-            <span>{{ society_entity_type }}</span>
+            <span>{{ legalNotices.societyEntityType }}</span>
         </p>
-        <p>
-            <span>Capital social : </span>
-            <span>{{ capital_amount }}</span>
-        </p>
+        {% if(legalNoticeParams.isCapitalSocial) %}
+            <p>
+                <span>Capital social : </span>
+                <span>{{ legalNotices.capitalAmount }} €</span>
+            </p>
+        {% endif %}
         <p>
             <span>Siège social : </span>
-            <span>{{ owner_streetAddress }}, {{ owner_postalCode }} {{ owner_addressLocality }}
-                , {{ owner_addressCountry }}</span>
+            <span>{{ legalNotices.ownerStreetAddress }} {{ legalNotices.ownerPostalCode }} {{ legalNotices.ownerAddressLocality }} {{ legalNotices.ownerAddressCountry }}</span>
         </p>
-        <h3>Contact</h3>
+        {% else %}
+        <p>
+            <span>Nom : </span>
+            <span>{{ legalNotices.individualOwnerFirstname }} {{ legalNotices.individualOwnerLastname }}</span>
+        </p>
+        <p>
+            <span>Adresse : </span>
+            <span>{{ legalNotices.ownerStreetAddress }} {{ legalNotices.ownerPostalCode }} {{ legalNotices.ownerAddressLocality }}
+                {{ legalNotices.ownerAddressCountry }}</span>
+        </p>
+    </div>
+    {% endif %}
+
+    <h3>Contact</h3>
+    <div class="dl">
         <p>
             <span>E-mail : </span>
-            <span>{{ owner_email }}</span>
+            <span>{{ legalNotices.ownerEmail }}</span>
         </p>
         <p>
             <span>Téléphone : </span>
-            <span>{{ owner_phone }}</span>
-        </p>
-        <h3>Numéro d'identification</h3>
-        <p>
-            <span>Numéro d'inscripion RCS : </span>
-            <span>{{ duns_rcs }}</span>
-        </p>
-        <p>
-            <span>Numéro d'inscripion Registre des Métiers : </span>
-            <span>{{ duns_rm }}</span>
-        </p>
-        <p>
-            <span>TVA Intracommunautaire : </span>
-            <span>{{ vat_identifier }}</span>
-        </p>
-        <h3>Profession réglementées</h3>
-        <p>
-            <span>Titre professionnel : </span>
-            <span> {{ licensed_profession_title }}</span>
-        </p>
-        <p>
-            <span>Nom de l'ordre ou organisme d'inscription : </span>
-            <span> {{ licensed_profession_organism }}</span>
-        </p>
-        <p>
-            <span>Référence aux règles professionnelles : </span>
-            <span> {{ licensed_profession_ref }}</span>
-        </p>
-        <p>
-            <span>Pays de délivrance : </span>
-            <span> {{ licensed_profession_eu_state }}</span>
+            <span>{{ legalNotices.ownerPhone }}</span>
         </p>
     </div>
+
+    {% if(legalNoticeParams.isRCS == true or legalNoticeParams.isRM == true or legalNoticeParams.isVatIdentifier == true) %}
+        <h3>Numéro d'identification</h3>
+        <div class="dl">
+            {% if(legalNoticeParams.isRCS) %}
+                <p>
+                    <span>Numéro d'inscripion RCS : </span>
+                    <span>{{ legalNotices.dunsRcs }}</span>
+                </p>
+            {% endif %}
+            {% if(legalNoticeParams.isRM) %}
+                <p>
+                    <span>Numéro d'inscripion Registre des Métiers : </span>
+                    <span>{{ legalNotices.dunsRm }}</span>
+                </p>
+            {% endif %}
+            {% if(legalNoticeParams.isVatIdentifier) %}
+                <p>
+                    <span>TVA Intracommunautaire : </span>
+                    <span>{{ legalNotices.vatIdentifier }}</span>
+                </p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if(legalNoticeParams.isLicensedProfession) %}
+        <h3>Profession réglementées</h3>
+        <div class="dl">
+            <p>
+                <span>Titre professionnel : </span>
+                <span> {{ legalNotices.licensedProfessionTitle }}</span>
+            </p>
+            <p>
+                <span>Nom de l'ordre ou organisme d'inscription : </span>
+                <span> {{ legalNotices.licensedProfessionOrganism }}</span>
+            </p>
+            <p>
+                <span>Référence aux règles professionnelles : </span>
+                <span> {{ legalNotices.licensedProfessionRef }}</span>
+            </p>
+            <p>
+                <span>Pays de délivrance : </span>
+                <span> {{ legalNotices.licensedProfessionEuState }}</span>
+            </p>
+        </div>
+    {% endif %}
+
     <h2>2. Hébergement</h2>
     <p>Ce site interne est hébergé par :</p>
     <div class="dl">
         <p>
             <span>Société : </span>
-            <span>{{ hosting_name }}</span></p>
+            <span>{{ legalNotices.hostingName }}</span></p>
         <p>
             <span>Forme juridique : </span>
-            <span>{{ hosting_entity_type }}</span>
+            <span>{{ legalNotices.hostingEntityType }}</span>
         </p>
         <p>
             <span>Capital social  :</span>
-            <span>{{ hosting_capital_amount }}</span>
+            <span>{{ legalNotices.hostingCapitalAmount }} €</span>
         </p>
         <p>
             <span>Siège social : </span>
-            <span>{{ hosting_streetAddress }}, {{ hosting_postalCode }} {{ hosting_addressLocality }}
-                , {{ hosting_addressCountry|upper }}</span>
+            <span>{{ legalNotices.hostingStreetAddress }} {{ legalNotices.hostingPostalCode }} {{ legalNotices.hostingAddressLocality }}
+                {{ legalNotices.hostingAddressCountry }}</span>
         </p>
         <p>
             <span>RCS : </span>
-            <span>{{ hosting_duns_rcs }}</span>
+            <span>{{ legalNotices.hostingDunsRcs }}</span>
         </p>
         <p>
             <span>E-mail : </span>
-            <span>{{ hosting_email }}</span>
+            <span>{{ legalNotices.hostingEmail }}</span>
         </p>
         <p>
             <span>Téléphone : </span>
-            <span>{{ hosting_phone }}</span>
+            <span>{{ legalNotices.hostingPhone }}</span>
         </p>
     </div>
+
     <h2>3. Maintenance du site</h2>
     <p>TODO Entité qui se s'occupe de la maintenance du site</p>
 </div>
