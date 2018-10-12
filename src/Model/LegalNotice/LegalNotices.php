@@ -11,102 +11,320 @@
 
 namespace App\Model\LegalNotice;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Class LegalNotices.
  */
 class LegalNotices
 {
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $domain;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"society"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $societyOwnerName;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"society"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $societyEntityType;
 
-    /** @var null|string */
+    /** @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"individual"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $individualOwnerLastname;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"individual"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $individualOwnerFirstname;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $ownerStreetAddress;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $ownerPostalCode;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $ownerAddressLocality;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $ownerAddressCountry;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $ownerEmail;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $ownerPhone;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $publicationOfficerLastname;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $publicationOfficerFirstname;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingName;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingEntityType;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingStreetAddress;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingPostalCode;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingAddressLocality;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingAddressCountry;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingEmail;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingPhone;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingCapitalAmount;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"default"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $hostingDunsRcs;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"rcs"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $dunsRcs;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"rm"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $dunsRm;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"vatIdentifier"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $vatIdentifier;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"capitalSocial"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $capitalAmount;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"licensedProfession"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $licensedProfessionRef;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"licensedProfession"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $licensedProfessionTitle;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"licensedProfession"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $licensedProfessionEuState;
 
-    /** @var null|string */
+    /**
+     * @var null|string
+     *
+     * @Assert\NotBlank(
+     *     groups={"licensedProfession"},
+     *     message="legal_notices.not_blank"
+     * )
+     */
     private $licensedProfessionOrganism;
 
     /**
