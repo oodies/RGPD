@@ -8,8 +8,27 @@
 #
 
 ##
+# Generic
+previous: "Précédent"
+continue: "Poursuivre"
+
+
+##
+# Legal notice form request
+legal_notice_pre_form:
+    stepper: "1 / 3 - Répondez à ces questions et poursuivre !"
+    is_society: "Le site internet concerne t'il une société ?"
+    is_rcs: "Votre activité est-elle assujettie aux formalités d'inscription au registre du commerce et des sociétés ?"
+    is_rm: "Votre activité est-elle assujettie aux formalités d'inscription au registre des métiers ?"
+    is_capital_social: "Les statuts de votre forme juridique comportent-ils un capital social ?"
+    is_vat_identifier: "Votre activité est-elle assujettie à la TVA et identifiée par un numéro individuelle en application de l'article 286 ter du CGI ?"
+    is_licensed_profession: "Votre activité est-elle une profession réglementée ?"
+
+##
 # Legal notice form page
 legal_notice:
+    stepper: "2 / 3 - Remplisser le formulaire et générer !"
+
     # header
     header_title: "Générateur de mentions légales"
 
@@ -19,34 +38,29 @@ legal_notice:
     # Sections (title, subtitle, helper, etc ..)
     website_section:
         label: "Site Internet"
-        help: "Sans www, sans http(s)://"
+        help: "exemple : http://mon-domain.fr"
     owner_section:
-        label: "Identification du propriétaire du site"
-        individual:
-            label: "Personne physique"
-        society:
-            label: "Personne morale"
+        label: "Editeur"
     owner_address_section:
-        label: "Adresse du propriétaire du site"
-        help: "Adresse personnelle ou adresse du siège social de l'entreprise."
+        label: "Adresse de l'éditeur"
     owner_contact_details_section:
-        label: "Coordonnées pour rentrer en contact avec le propriétaire du site"
+        label: "Coordonnées pour rentrer en contact avec l'éditeur"
     publication_officer_section:
         label: "Responsable de publication"
     hosting_section:
         label: "Hébergeur du site"
     duns_section:
-        label: "R.C.S ou R.M"
-        question: "Si votre activité est assujetie aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers"
+        label: "Numéro d'identification"
+        question: "Votre activité est assujetie aux formalités d'inscription au registre du commerce et des sociétés ou au répertoire des métiers, renseigner le numéro d'identifiction."
     capital_section:
         label: "Capital social"
-        question: "Si les statuts de votre forme juridique à un capital social, renseigner le"
+        question: "Les statuts de votre forme juridique à un capital social, renseigner le."
     vat_identifier_section:
-        label: "Assujeties à la TVA ?"
-        question: "Si vous êtes assujettie à la taxe sur la valeur ajoutée et identitifiée par un numéro individuelle en application de l'article 286 ter du code général des impôts, renseigner le :"
+        label: "Assujeties à la TVA"
+        question: "Vous êtes assujettie à la taxe sur la valeur ajoutée et identitifiée par un numéro individuelle en application de l'article 286 ter du code général des impôts, renseigner le."
     licensed_profession_section:
         label: "Profession réglementée"
-        question: "Si vous êtes membre d'une profession réglementée, renseigner :"
+        question: "Vous êtes membre d'une profession réglementée, renseigner :"
 
 
     ## fields legal notice form
@@ -54,7 +68,7 @@ legal_notice:
 
     # on website section
     domain:
-        label: "Nom du domaine du site"
+        label: "URL"
 
     # on website owner section
     individual_owner_lastname:
@@ -131,7 +145,7 @@ legal_notice:
     licensed_profession_ref:
         label: "la références aux règles professionnelles applicables"
     licensed_profession_title:
-        label: "Son titre professionnel"
+        label: "Le titre professionnel"
     licensed_profession_eu_state:
         label: "L'état membre dans lequel le titre professionnel a été octroyé"
     licensed_profession_organism:

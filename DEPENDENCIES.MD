@@ -27,7 +27,8 @@
 | symfony/translation |The Translation component provides tools to internationalize your application. [Documentation](https://symfony.com/doc/current/components/translation.html) |
 | symfony/twig-bundle | twig |
 | symfony/validator | The Validator component provides tools to validate values following the JSR-303 Bean Validation specification. [Documentation](https://symfony.com/doc/current/components/validator.html) |
-
+| doctrine/annotations | PHP Doctrine DocBlock Annotations Parser library that lets you parse structured data out of PHP docblocks for use with other functionality.
+ |
 
 ## Require dev
 

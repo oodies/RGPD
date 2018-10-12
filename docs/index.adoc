@@ -1,0 +1,9 @@
+== Les informations légales et recommandées pour un site internet
+
+Sur un site internet ou application mobile, doivent être mentionné des informations légales et recommandées à destinations des utilisateurs. Selon les fonctionnalités du site, on distingue plusieurs rubriques d’informations qui doivent être clairement afficher sur le site.
+
+* Mentions légales
+* Politiques de confidentialité (RGPD)
+* Politique de cookies - Déclarations d’utilisations des cookies
+* Conditions générales d’utilisations (CGU)
+* Conditions générales de ventes (CGV)

@@ -9,33 +9,42 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Controller;
+namespace App\Controller\LegalNotice;
 
+use App\Form\LegalNotice\Form as LegalNoticeForm;
+use App\Model\LegalNotice\LegalNotices;
+use App\Model\LegalNotice\Params;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Twig\Environment as Twig;
 
 /**
- * Class LegalNoticesGenerator.
+ * Class Generator.
  */
-class LegalNoticesGenerator
+class Generator
 {
     /** @var FormFactoryInterface */
-    private $formFactoryInterface;
+    private $formFactory;
 
     /** @var Twig */
     private $twig;
 
+    /** @var SessionInterface */
+    private $session;
+
     /**
-     * LegalNoticesGenerator constructor.
+     * Generator constructor.
      *
-     * @param FormFactoryInterface $formFactoryInterface
+     * @param FormFactoryInterface $formFactory
      * @param Twig                 $twig
+     * @param SessionInterface     $session
      */
-    public function __construct(FormFactoryInterface $formFactoryInterface, Twig $twig)
+    public function __construct(FormFactoryInterface $formFactory, Twig $twig, SessionInterface $session)
     {
-        $this->formFactoryInterface = $formFactoryInterface;
+        $this->formFactory = $formFactory;
+        $this->session = $session;
         $this->twig = $twig;
     }
 
@@ -43,6 +52,7 @@ class LegalNoticesGenerator
      * @param Request $request
      *
      * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Form\Exception\LogicException
      * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -52,13 +62,23 @@ class LegalNoticesGenerator
      */
     public function __invoke(Request $request): Response
     {
-        $form = $this->formFactoryInterface->create('App\Form\LegalNoticesForm');
+        /** @var Params $params */
+        $params = $this->session->get('app.legalNotice.params');
+        $legalNotices = new LegalNotices();
+
+        $form = $this->formFactory->create(
+            LegalNoticeForm::class,
+            $legalNotices,
+            ['legalNotice_params' => $params]
+        );
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             return new Response(
                 $this->twig->render(
-                    'App/legalNotice.html.twig',
+                    'App\LegalNotice\document.html.twig',
+                    //$form->getData()
+
                     [
                         // STUB Fake
                         'domain'                     => 'oodigital.fr',
@@ -96,14 +116,17 @@ class LegalNoticesGenerator
                         'hosting_phone'           => '1007',
                         'hosting_email'           => 'support@ovh.com',
                     ]
-                )
+        )
             );
         }
 
         return new Response(
             $this->twig->render(
-                'App/legalNoticeForm.html.twig',
-                ['form' => $form->createView()]
+                'App\LegalNotice\form.html.twig',
+                [
+                    'form'                  => $form->createView(),
+                    'legalNoticeParameters' => $params,
+                ]
             )
         );
     }
