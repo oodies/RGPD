@@ -18,10 +18,9 @@
 </head>
 <body>
 <div class="container">
-
     <h1>{{ 'legal_notice.title'|trans }}</h1>
-    <p>2 / 3 - Remplisser le formulaire et générer !</p>
-    <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">Précédent</a>
+    <p>{{ 'legal_notice.stepper'|trans }}</p>
+    <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">{{ 'previous'|trans }}</a>
     {{ form_start(form, {'attr' : { 'novalidate':'novalidate'}} ) }}
     <section>
         <h3>{{ 'legal_notice.website_section.label'|trans }}</h3>
@@ -46,7 +45,7 @@
         {% if legalNoticeParameters.isSociety == true %}
             <div class="form-group">
                      {{ form_label(form.societyOwnerName) }}
-                    {{ form_widget(form.societyOwnerName, {'attr': {'class': 'form-control'}} ) }}
+                     {{ form_widget(form.societyOwnerName, {'attr': {'class': 'form-control'}} ) }}
                 </div>
             <div class="form-group">
                     {{ form_label(form.societyEntityType) }}
@@ -213,7 +212,7 @@
         </div>
     </section>
     {{ form_rest(form) }}
-    <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">Précédent</a>
+    <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">{{ 'previous'|trans }}</a>
     <button type="submit" class="btn btn-primary">{{ 'legal_notice.validate'|trans }}</button>
     {{ form_end(form) }}
 </div>
