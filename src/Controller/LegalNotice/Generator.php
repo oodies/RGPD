@@ -52,6 +52,7 @@ class Generator
      * @param Request $request
      *
      * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Form\Exception\LogicException
      * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -72,7 +73,7 @@ class Generator
         );
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             return new Response(
                 $this->twig->render(
                     'App\LegalNotice\document.html.twig',
