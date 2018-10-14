@@ -34,6 +34,9 @@ class Params
     /** @var bool */
     private $isLicensedProfession = false;
 
+    /** @var null|string */
+    private $none;
+
     /**
      * @return bool
      */
@@ -150,6 +153,26 @@ class Params
     public function setIsLicensedProfession(bool $isLicensedProfession): self
     {
         $this->isLicensedProfession = $isLicensedProfession;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getNone(): ?string
+    {
+        return $this->none;
+    }
+
+    /**
+     * @param null|string $none
+     *
+     * @return Params
+     */
+    public function setNone(?string $none): self
+    {
+        $this->none = $none;
 
         return $this;
     }

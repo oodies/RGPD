@@ -13,6 +13,7 @@ namespace App\Form\LegalNotice;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,36 +32,55 @@ class PreForm extends AbstractType
             ->add(
                 'isSociety',
                 CheckboxType::class,
-                ['label' => 'legal_notice_pre_form.is_society']
+                [
+                    'label'    => 'legal_notice_pre_form.is_society',
+                    'required' => false,
+                ]
             )
             ->add(
                 'isRCS',
                 CheckboxType::class,
-                ['label' => 'legal_notice_pre_form.is_rcs']
+                [
+                    'label'    => 'legal_notice_pre_form.is_rcs',
+                    'required' => false,
+                ]
             )
             ->add(
                 'isRM',
                 CheckboxType::class,
-                ['label' => 'legal_notice_pre_form.is_rm']
+                [
+                    'label'    => 'legal_notice_pre_form.is_rm',
+                    'required' => false,
+                ]
             )
             ->add(
                 'isCapitalSocial',
                 CheckboxType::class,
-                ['label' => 'legal_notice_pre_form.is_capital_social']
+                [
+                    'label'    => 'legal_notice_pre_form.is_capital_social',
+                    'required' => false,
+                ]
             )
             ->add(
                 'isVatIdentifier',
                 CheckboxType::class,
-                ['label' => 'legal_notice_pre_form.is_vat_identifier']
+                [
+                    'label'    => 'legal_notice_pre_form.is_vat_identifier',
+                    'required' => false,
+                ]
             )
             ->add(
                 'isLicensedProfession',
                 CheckboxType::class,
                 [
-                    'label' => 'legal_notice_pre_form.is_licensed_profession',
+                    'label'    => 'legal_notice_pre_form.is_licensed_profession',
+                    'required' => false,
                 ]
             )
-        ;
+            ->add(
+                'none',
+                HiddenType::class
+            );
     }
 
     /**
