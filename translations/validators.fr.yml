@@ -9,3 +9,6 @@
 
 legal_notices:
     not_blank: "à renseigner"
+
+legal_notices_params:
+    is_single_id: "Sélectionnez RCS ou RM"

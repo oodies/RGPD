@@ -12,6 +12,7 @@
     <h1>{{ 'legal_notice.title'|trans }}</h1>
     <p>{{ 'legal_notice_pre_form.stepper'|trans }}</p>
     {{ form_start(form, {'attr' : { 'novalidate':'novalidate'}} ) }}
+    {{ form_errors(form) }}
     <div class="form-check">
         {{ form_widget(form.isSociety) }}
         {{ form_label(form.isSociety) }}

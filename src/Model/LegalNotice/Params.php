@@ -11,8 +11,12 @@
 
 namespace App\Model\LegalNotice;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Class Params.
+ *
+ * @Assert\GroupSequence({"Params", "Strict"})
  */
 class Params
 {
@@ -175,5 +179,25 @@ class Params
         $this->none = $none;
 
         return $this;
+    }
+
+    /**
+     * @Assert\IsTrue(
+     *     groups={"Strict"},
+     * message="legal_notices_params.is_single_id")
+     */
+    public function isSingleID()
+    {
+        // RM and RCS is not required
+        if (false === $this->isRM && false === $this->isRCS) {
+            return true;
+        }
+
+        // Only one identifier at a time
+        if ($this->isRM !== $this->isRCS) {
+            return true;
+        }
+
+        return false;
     }
 }
