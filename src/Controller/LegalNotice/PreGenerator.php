@@ -62,7 +62,11 @@ class PreGenerator
      * @param Request $request
      *
      * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Form\Exception\LogicException
      * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
+     * @throws \Symfony\Component\Routing\Exception\InvalidParameterException
+     * @throws \Symfony\Component\Routing\Exception\MissingMandatoryParametersException
+     * @throws \Symfony\Component\Routing\Exception\RouteNotFoundException
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -80,7 +84,7 @@ class PreGenerator
         $form = $this->formFactory->create(PreForm::class, $params);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->session->set('app.legalNotice.params', $params);
 
             return new RedirectResponse($this->router->generate('app_legal_notice_generator'));
