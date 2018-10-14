@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GroupSequence;
 
 /**
  * Class PreForm.
@@ -80,7 +81,8 @@ class PreForm extends AbstractType
             ->add(
                 'none',
                 HiddenType::class
-            );
+            )
+        ;
     }
 
     /**
@@ -93,6 +95,7 @@ class PreForm extends AbstractType
         $resolver->setDefaults(
             [
                 'translation_domain' => 'application',
+                'validation_groups'  => new GroupSequence(['Params', 'Strict']),
             ]
         );
     }
