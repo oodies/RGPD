@@ -26,9 +26,9 @@
 | symfony/form | The Form component allows you to easily create, process and reuse forms. [Documentation](https://symfony.com/doc/current/components/form.html) |
 | symfony/translation |The Translation component provides tools to internationalize your application. [Documentation](https://symfony.com/doc/current/components/translation.html) |
 | symfony/twig-bundle | twig |
+| symfony\serializer | The Serializer component is meant to be used to turn objects into a specific format (XML, JSON, YAML, ...) and the other way around. |
 | symfony/validator | The Validator component provides tools to validate values following the JSR-303 Bean Validation specification. [Documentation](https://symfony.com/doc/current/components/validator.html) |
-| doctrine/annotations | PHP Doctrine DocBlock Annotations Parser library that lets you parse structured data out of PHP docblocks for use with other functionality.
- |
+| doctrine/annotations | PHP Doctrine DocBlock Annotations Parser library that lets you parse structured data out of PHP docblocks for use with other functionality. |
 
 ## Require dev
 
