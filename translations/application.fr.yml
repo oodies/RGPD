@@ -103,6 +103,9 @@ legal_notice:
         label: "Prénom"
 
     # on hosting section
+    hostProviderList:
+        label: "Sélectionnez un hébergeur"
+        alternative: "Ou renseigner ci-dessous les informations concernant l'hébergeur"
     hosting_name:
         label: "Raison sociale"
     hosting_entity_type:

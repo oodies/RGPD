@@ -166,6 +166,12 @@
     <section>
         <h3>{{ 'legal_notice.hosting_section.label'|trans }}</h3>
         <div class="form-group">
+            {{ form_label(form.hostProviderList) }}
+            {{ form_widget(form.hostProviderList) }}
+        </div>
+        <hr class="separate" />
+        <p>{{ 'legal_notice.hostProviderList.alternative'|trans }}</p>
+        <div class="form-group">
             {{ form_label(form.hostingName) }}
             {{ form_widget(form.hostingName, {'attr': {'class': 'form-control'}} ) }}
         </div>
@@ -210,6 +216,7 @@
             {{ form_label(form.hostingEmail) }}
             {{ form_widget(form.hostingEmail, {'attr': {'class': 'form-control'}} ) }}
         </div>
+        <div id="hostProviderData" data-provider="{{ hostProviderData }}"></div>
     </section>
     {{ form_rest(form) }}
     <a type="button" href="{{ path('app_legal_notice_pre_generator') }}" class="btn btn-secondary">{{ 'previous'|trans }}</a>
@@ -217,4 +224,7 @@
     {{ form_end(form) }}
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{ asset('js/application.js') }}"></script>
+<script> hostProvider.init(); </script>
 </html>
