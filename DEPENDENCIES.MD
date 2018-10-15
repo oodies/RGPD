@@ -23,6 +23,7 @@
 ## Require prod
 | LIBRARIES | USE |
 | --------- | --- |
+| symfony/asset | The Asset component manages URL generation and versioning of web assets such as CSS stylesheets, JavaScript files and image files. |
 | symfony/form | The Form component allows you to easily create, process and reuse forms. [Documentation](https://symfony.com/doc/current/components/form.html) |
 | symfony/translation |The Translation component provides tools to internationalize your application. [Documentation](https://symfony.com/doc/current/components/translation.html) |
 | symfony/twig-bundle | twig |
