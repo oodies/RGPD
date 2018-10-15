@@ -6,6 +6,7 @@
 parameters:
     locale: 'fr'
     default_locale: 'fr'
+    project_dir: '%kernel.project_dir%'
 
 services:
     # default configuration for services in *this* file
