@@ -1,0 +1,49 @@
+#
+# This file is part of RGPD project.
+#
+# (c) Sébastien CHOMY <sebastien.chomy@gmail.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+#
+
+hostProvider:
+    ovh:
+        dun: "RCS Lille Métropole 424 761 419 00045"
+        email: ~
+        legalName: "OVH SAS"
+        name: "OVH"
+        telephone: "1007"
+        vatID: "FR 22 424 761 419"
+        capitalAmount: "10069020"
+        address:
+            addressCountry: "France"
+            addressLocality: "Roubaix"
+            postalCode: "59100"
+            streetAddress: "2 rue Kellermann"
+    1and1:
+        dun: "RCS Sarreguemines B 431 303 775"
+        email: "litiges@1and1.fr"
+        legalName: "1&1 Internet SARL"
+        name: "1and1"
+        telephone: "0970 808 911"
+        vatID: "FR 13 431 303 775"
+        capitalAmount: "100000"
+        address:
+            addressCountry: "France"
+            addressLocality: "Sarreguemines"
+            postalCode: "57200"
+            streetAddress: "7 Place de la gare"
+    gandi:
+        dun: "RCS Paris 423 093 459"
+        email: "direction@gandi.net"
+        legalName: "GANDI SAS"
+        name: "GANDI"
+        telephone: "+33(0)1 70 37 76 61"
+        vatID: "FR 81 423 093 459"
+        capitalAmount: "800000"
+        address:
+            addressCountry: "France"
+            addressLocality: "Paris"
+            postalCode: "75013"
+            streetAddress: "63-65 boulevard Masséna"
