@@ -12,6 +12,7 @@
 namespace App\Controller\LegalNotice;
 
 use App\Form\LegalNotice\Form as LegalNoticeForm;
+use App\Manager\HostProviderManager;
 use App\Model\LegalNotice\LegalNotices;
 use App\Model\LegalNotice\Params;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -28,6 +29,9 @@ class Generator
     /** @var FormFactoryInterface */
     private $formFactory;
 
+    /** @var HostProviderManager */
+    private $hostProviderManager;
+
     /** @var Twig */
     private $twig;
 
@@ -38,12 +42,18 @@ class Generator
      * Generator constructor.
      *
      * @param FormFactoryInterface $formFactory
+     * @param HostProviderManager  $hostProviderManager
      * @param Twig                 $twig
      * @param SessionInterface     $session
      */
-    public function __construct(FormFactoryInterface $formFactory, Twig $twig, SessionInterface $session)
-    {
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        HostProviderManager $hostProviderManager,
+        Twig $twig,
+        SessionInterface $session
+    ) {
         $this->formFactory = $formFactory;
+        $this->hostProviderManager = $hostProviderManager;
         $this->session = $session;
         $this->twig = $twig;
     }
@@ -52,8 +62,11 @@ class Generator
      * @param Request $request
      *
      * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException
      * @throws \Symfony\Component\Form\Exception\LogicException
      * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
+     * @throws \Symfony\Component\Serializer\Exception\UnexpectedValueException
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -75,7 +88,10 @@ class Generator
         $form = $this->formFactory->create(
             LegalNoticeForm::class,
             $legalNotices,
-            ['legalNotice_params' => $params]
+            [
+                'legalNotice_params'  => $params,
+                'hostProviderManager' => $this->hostProviderManager,
+            ]
         );
 
         $form->handleRequest($request);
@@ -100,6 +116,7 @@ class Generator
                 [
                     'form'                  => $form->createView(),
                     'legalNoticeParameters' => $params,
+                    'hostProviderData'      => $this->hostProviderManager->findAll(),
                 ]
             )
         );
