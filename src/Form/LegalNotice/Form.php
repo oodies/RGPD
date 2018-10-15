@@ -11,8 +11,10 @@
 
 namespace App\Form\LegalNotice;
 
+use App\Manager\HostProviderManager;
 use App\Model\LegalNotice\params;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -30,13 +32,20 @@ class Form extends AbstractType
     /** @var params */
     private $params;
 
+    /** @var HostProviderManager */
+    private $hostProviderManager;
+
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->params = $options['legalNotice_params'];
+        $this->hostProviderManager = $options['hostProviderManager'];
 
         $builder
             // website section
@@ -96,7 +105,8 @@ class Form extends AbstractType
             ->add(
                 'ownerAddressCountry',
                 CountryType::class,
-                ['label'                => 'legal_notice.owner_addressCountry.label',
+                [
+                    'label'             => 'legal_notice.owner_addressCountry.label',
                     'preferred_choices' => ['FR'],
                 ]
             )
@@ -124,6 +134,18 @@ class Form extends AbstractType
             )
             // hosting section
             ->add(
+                'hostProviderList',
+                ChoiceType::class,
+                [
+                    'label'    => 'legal_notice.hostProviderList.label',
+                    'expanded' => false,
+                    'multiple' => false,
+                    'mapped'   => false,
+                    'required' => false,
+                    'choices'  => array_flip($this->hostProviderManager->getList()),
+                ]
+            )
+            ->add(
                 'hostingName',
                 TextType::class,
                 ['label' => 'legal_notice.hosting_name.label']
@@ -150,9 +172,9 @@ class Form extends AbstractType
             )
             ->add(
                 'hostingAddressCountry',
-                CountryType::class,
-                ['label'                => 'legal_notice.hosting_addressCountry.label',
-                    'preferred_choices' => ['FR'],
+                TextType::class,
+                [
+                    'label' => 'legal_notice.hosting_addressCountry.label',
                 ]
             )
             ->add(
@@ -257,9 +279,10 @@ class Form extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'translation_domain' => 'application',
-                'legalNotice_params' => null,
-                'validation_groups'  => [$this, 'getValidationGroups'],
+                'translation_domain'  => 'application',
+                'legalNotice_params'  => null,
+                'hostProviderManager' => null,
+                'validation_groups'   => [$this, 'getValidationGroups'],
             ]
         );
     }
